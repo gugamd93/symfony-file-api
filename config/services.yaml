@@ -22,3 +22,6 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Model\Contract\CustomModelInterface: '@App\Model\ServerModel'
+    App\Repository\Contract\CustomRepositoryInterface: '@App\Repository\ServerRepository'
+    App\Service\Contract\PathProviderInterface: '@App\Service\ServerFilePathService'
