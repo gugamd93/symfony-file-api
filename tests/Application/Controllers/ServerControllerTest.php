@@ -2,7 +2,6 @@
 
 namespace App\Tests\Application\Controllers;
 
-use App\Service\Contract\PathProviderInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
