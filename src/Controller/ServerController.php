@@ -33,7 +33,7 @@ class ServerController extends AbstractController
 
         $filterValues = $request->query->all('filter');
 
-        $filteredData = $this->cache->get(md5(implode($filterValues)),
+        $filteredData = $this->cache->get(md5(json_encode($filterValues)),
             function (ItemInterface $item) use ($repository, $filterValues): array
             {
                 $item->expiresAfter(3600);
