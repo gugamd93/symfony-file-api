@@ -3,7 +3,8 @@
 namespace App\Tests\Unit\Model;
 
 use App\Service\Contract\PathProviderInterface;
-use App\Service\Contract\ServerRowFactoryServiceInterface;
+use App\Service\Contract\ServerDataProviderInterface;
+use App\Service\Contract\ServerRowFactoryInterface;
 use PHPUnit\Framework\TestCase;
 use App\Model\ServerModel;
 use App\Model\ServerRow;
@@ -17,13 +18,13 @@ class ServerModelTest extends KernelTestCase
         self::bootKernel();
         $container = static::getContainer();
 
-        /** @var ServerRowFactoryServiceInterface $factoryService */
-        $factoryService = $container->get(ServerRowFactoryServiceInterface::class);
+        /** @var ServerRowFactoryInterface $factoryService */
+        $factoryService = $container->get(ServerRowFactoryInterface::class);
 
-        /** @var PathProviderInterface $filePathService */
-        $filePathService = $container->get(PathProviderInterface::class);
+        /** @var ServerDataProviderInterface $dataProviderService */
+        $dataProviderService = $container->get(ServerDataProviderInterface::class);
 
-        return new ServerModel($filePathService, $factoryService);
+        return new ServerModel($dataProviderService, $factoryService);
     }
 
     private function filterModel(array $filters): array

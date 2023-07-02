@@ -3,7 +3,7 @@
 namespace App\Tests\Unit\Service;
 
 use App\Model\ServerRow;
-use App\Service\Contract\ServerRowFactoryServiceInterface;
+use App\Service\Contract\ServerRowFactoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 
@@ -13,8 +13,8 @@ class ServerRowFactoryServiceTest extends KernelTestCase
     {
         self::bootKernel();
         $container = static::getContainer();
-        /** @var ServerRowFactoryServiceInterface $service */
-        $service = $container->get(ServerRowFactoryServiceInterface::class);
+        /** @var ServerRowFactoryInterface $service */
+        $service = $container->get(ServerRowFactoryInterface::class);
 
         $object = $service->createObject([]);
         $expectedObject = ServerRow::class;

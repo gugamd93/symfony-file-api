@@ -4,7 +4,7 @@ namespace App\Service\Contract;
 
 use App\Model\ServerRow;
 
-interface ServerRowFactoryServiceInterface
+interface ServerRowFactoryInterface
 {
     function createObject(array $data = []): ServerRow;
 }

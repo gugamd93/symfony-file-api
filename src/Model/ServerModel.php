@@ -3,16 +3,14 @@
 namespace App\Model;
 
 use App\Model\Contract\CustomModelInterface;
-use App\Service\Contract\PathProviderInterface;
-use App\Service\Contract\ServerRowFactoryServiceInterface;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+use App\Service\Contract\ServerDataProviderInterface;
+use App\Service\Contract\ServerRowFactoryInterface;
 
 class ServerModel implements CustomModelInterface
 {
-
     public function __construct(
-        private readonly PathProviderInterface $serverFilePathService,
-        private readonly ServerRowFactoryServiceInterface $serverRowFactoryService,
+        private readonly ServerDataProviderInterface $dataProvider,
+        private readonly ServerRowFactoryInterface   $serverRowFactoryService,
     )
     {
     }
@@ -20,23 +18,13 @@ class ServerModel implements CustomModelInterface
     // Attributes
     private ?array $data = null;
 
-    /** @var ServerRow[]|null  */
+    /** @var ServerRow[]|null */
     private ?array $_builtData = null;
 
     public function load(): self
     {
-        // Create a new Spreadsheet object from XLSX file
-        $spreadsheet = IOFactory::load($this->serverFilePathService->getPath());
-
-        // Get the first worksheet from spreadsheet
-        $worksheet = $spreadsheet->getActiveSheet();
-
-        // Get all rows from worksheet
-        $allRows = $worksheet->toArray();
-
-        // Remove first item from array (labels row)
-        array_shift($allRows);
-        $this->setData($allRows);
+        $data = $this->dataProvider->getServerData();
+        $this->setData($data);
 
         return $this;
     }
@@ -60,8 +48,8 @@ class ServerModel implements CustomModelInterface
         $currentData = $this->getBuiltData();
         $filteredData = [];
 
-        foreach($currentData as $row) {
-            if($this->applyFiltersToRow($row, $filterCondition)) {
+        foreach ($currentData as $row) {
+            if ($this->applyFiltersToRow($row, $filterCondition)) {
                 $filteredData[] = $row->toArray();
             }
         }
@@ -81,6 +69,7 @@ class ServerModel implements CustomModelInterface
     private function setData(array $data): void
     {
         $this->data = $data;
+        return;
     }
 
     /**
@@ -98,7 +87,7 @@ class ServerModel implements CustomModelInterface
 
     private function applyFiltersToRow(ServerRow $row, array $filters): bool
     {
-        if(empty($filters)) {
+        if (empty($filters)) {
             return true;
         }
 
