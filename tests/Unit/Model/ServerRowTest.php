@@ -53,4 +53,18 @@ class ServerRowTest extends TestCase
 
         $this->assertSame($expectedArray, $serverRowArray);
     }
+
+    public function testSetData(): void
+    {
+        $data = [];
+        $newData = ['foo' => 'bar'];
+        $serverRow = new ServerRow($data);
+
+        $serverRow->setData($newData);
+
+        $expectedData = $newData;
+        $data = $serverRow->getData();
+
+        $this->assertEquals($expectedData, $data);
+    }
 }

@@ -4,13 +4,15 @@ namespace App\Model;
 
 use App\Model\Contract\CustomModelInterface;
 use App\Service\Contract\PathProviderInterface;
+use App\Service\Contract\ServerRowFactoryServiceInterface;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ServerModel implements CustomModelInterface
 {
 
     public function __construct(
-        private readonly PathProviderInterface $serverFilePathService
+        private readonly PathProviderInterface $serverFilePathService,
+        private readonly ServerRowFactoryServiceInterface $serverRowFactoryService,
     )
     {
     }
@@ -43,7 +45,7 @@ class ServerModel implements CustomModelInterface
     {
         $builtData = [];
         foreach ($this->getData() as $row) {
-            $newRow = new ServerRow($row);
+            $newRow = $this->serverRowFactoryService->createObject($row);
             $newRow->build();
             $builtData[] = $newRow;
         }
@@ -89,10 +91,6 @@ class ServerModel implements CustomModelInterface
         return $this->_builtData;
     }
 
-    /**
-     * @param array|null $builtData
-     * @return void
-     */
     public function setBuiltData(?array $builtData): void
     {
         $this->_builtData = $builtData;

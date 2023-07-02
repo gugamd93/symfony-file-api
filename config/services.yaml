@@ -26,6 +26,7 @@ services:
     App\Model\Contract\CustomModelInterface: '@App\Model\ServerModel'
     App\Repository\Contract\CustomRepositoryInterface: '@App\Repository\ServerRepository'
     App\Service\Contract\PathProviderInterface: '@App\Service\ServerFilePathService'
+    App\Service\Contract\ServerRowFactoryServiceInterface: '@App\Service\ServerRowFactoryService'
     App\Service\ServerFilePathService:
         arguments:
             $databaseFilePath: '%app.database_file_path%'

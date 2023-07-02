@@ -3,6 +3,7 @@
 namespace App\Tests\Unit\Model;
 
 use App\Service\Contract\PathProviderInterface;
+use App\Service\Contract\ServerRowFactoryServiceInterface;
 use PHPUnit\Framework\TestCase;
 use App\Model\ServerModel;
 use App\Model\ServerRow;
@@ -13,13 +14,16 @@ class ServerModelTest extends KernelTestCase
 
     private function getModel(): ServerModel
     {
-        $mockFilePath = './data/LeaseWebTest.xlsx';
+        self::bootKernel();
+        $container = static::getContainer();
 
-        $serviceMock = $this->createMock(PathProviderInterface::class);
-        $serviceMock->method('getPath')
-            ->willReturn($mockFilePath);
+        /** @var ServerRowFactoryServiceInterface $factoryService */
+        $factoryService = $container->get(ServerRowFactoryServiceInterface::class);
 
-        return new ServerModel($serviceMock);
+        /** @var PathProviderInterface $filePathService */
+        $filePathService = $container->get(PathProviderInterface::class);
+
+        return new ServerModel($filePathService, $factoryService);
     }
 
     private function filterModel(array $filters): array
