@@ -1,5 +1,5 @@
 <?php
-namespace App\Tests\Unit\Models;
+namespace App\Tests\Unit\Model;
 
 use PHPUnit\Framework\TestCase;
 use App\Model\ServerRow;

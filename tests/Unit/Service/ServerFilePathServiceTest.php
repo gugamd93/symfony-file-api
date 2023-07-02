@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Unit\Services;
+namespace App\Tests\Unit\Service;
 
 use App\Service\ServerFilePathService;
 

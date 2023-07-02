@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Unit\Models;
+namespace App\Tests\Unit\Model;
 
 use App\Service\Contract\PathProviderInterface;
 use PHPUnit\Framework\TestCase;
