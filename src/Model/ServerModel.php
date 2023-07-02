@@ -41,11 +41,14 @@ class ServerModel implements CustomModelInterface
 
     public function buildData(): self
     {
+        $builtData = [];
         foreach ($this->getData() as $row) {
             $newRow = new ServerRow($row);
             $newRow->build();
-            $this->_builtData[] = $newRow;
+            $builtData[] = $newRow;
         }
+
+        $this->setBuiltData($builtData);
 
         return $this;
     }
@@ -88,12 +91,11 @@ class ServerModel implements CustomModelInterface
 
     /**
      * @param array|null $builtData
-     * @return ServerModel
+     * @return void
      */
-    public function setBuiltData(?array $builtData): ServerModel
+    public function setBuiltData(?array $builtData): void
     {
         $this->_builtData = $builtData;
-        return $this;
     }
 
     private function applyFiltersToRow(ServerRow $row, array $filters): bool
