@@ -2,19 +2,20 @@
 
 namespace App\Tests\Unit\Service;
 
-use App\Service\ServerFilePathService;
+use App\Service\Contract\PathProviderInterface;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-use PHPUnit\Framework\TestCase;
 
-
-class ServerFilePathServiceTest extends TestCase
+class ServerFilePathServiceTest extends KernelTestCase
 {
     public function testGetPath(): void
     {
-        $service = new ServerFilePathService();
+        self::bootKernel();
+        $container = static::getContainer();
+        $service = $container->get(PathProviderInterface::class);
 
         $path = $service->getPath();
-        $expectedPath = '../data/LeaseWeb.xlsx';
+        $expectedPath = 'data/LeaseWebTest.xlsx';
         $this->assertEquals($expectedPath, $path);
     }
 }
