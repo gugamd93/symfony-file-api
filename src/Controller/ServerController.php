@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Dto\Output\Transformer\ServerOutputDtoTransformer;
 use App\Repository\Contract\CustomRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,6 +18,7 @@ class ServerController extends AbstractController
     public function __construct(
         private readonly CustomRepositoryInterface $repository,
         private readonly CacheInterface            $cache,
+        private readonly ServerOutputDtoTransformer $transformer,
     )
     {
     }
@@ -41,7 +43,9 @@ class ServerController extends AbstractController
                 return $repository->filter($filterValues);
             }
         );
-        
-        return $this->json($filteredData);
+
+        $dto = $this->transformer->transformObjects($filteredData);
+
+        return $this->json($dto);
     }
 }

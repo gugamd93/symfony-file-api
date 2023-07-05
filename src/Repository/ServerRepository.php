@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Model\Contract\CustomModelInterface;
+use App\Model\ServerRow;
 use App\Repository\Contract\CustomRepositoryInterface;
 
 class ServerRepository implements CustomRepositoryInterface
@@ -15,10 +16,12 @@ class ServerRepository implements CustomRepositoryInterface
 
     public function get(bool $flushCache = false): array
     {
-        $data = $this->model->getData($flushCache);
-        return $data;
+        return $this->model->getData($flushCache);
     }
 
+    /**
+     * @return ServerRow[]
+     */
     public function filter(array $filterCondition): array
     {
         return $this->model->filter($filterCondition);

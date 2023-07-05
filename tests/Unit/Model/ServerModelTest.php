@@ -76,12 +76,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertNotEmpty($filteredData);
         $this->assertCount(486, $filteredData);
 
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterLocationAmsterdam(): void
@@ -93,12 +88,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(105, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterLocationWashington(): void
@@ -115,12 +105,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(126, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterHddTypeSATA(): void
@@ -137,12 +122,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(273, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterHddTypeSAS(): void
@@ -159,12 +139,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(11, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterHddTypeSSD(): void
@@ -181,12 +156,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(202, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterStorage0GB(): void
@@ -203,12 +173,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(19, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterStorage500GB(): void
@@ -225,12 +190,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(3, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterStorage4TB(): void
@@ -247,12 +207,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(43, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterStorage24TB(): void
@@ -269,12 +224,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(31, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterRAM2GB(): void
@@ -307,12 +257,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(35, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterRAMAllOptions(): void
@@ -340,12 +285,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(381, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testFilterAll(): void
@@ -371,12 +311,7 @@ class ServerModelTest extends KernelTestCase
         $this->assertIsArray($filteredData);
         $this->assertNotEmpty($filteredData);
         $this->assertCount(5, $filteredData);
-        $this->assertCount(5, $filteredData[0]);
-        $this->assertArrayHasKey('Model', $filteredData[0]);
-        $this->assertArrayHasKey('RAM', $filteredData[0]);
-        $this->assertArrayHasKey('HDD', $filteredData[0]);
-        $this->assertArrayHasKey('Location', $filteredData[0]);
-        $this->assertArrayHasKey('Price', $filteredData[0]);
+        $this->assertInstanceOf(ServerRow::class, $filteredData[0]);
     }
 
     public function testGetData(): void

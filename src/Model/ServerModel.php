@@ -43,6 +43,9 @@ class ServerModel implements CustomModelInterface
         return $this;
     }
 
+    /**
+     * @return ServerRow[]
+     */
     public function filter(array $filterCondition): array
     {
         $currentData = $this->getBuiltData();
@@ -50,7 +53,7 @@ class ServerModel implements CustomModelInterface
 
         foreach ($currentData as $row) {
             if ($this->applyFiltersToRow($row, $filterCondition)) {
-                $filteredData[] = $row->toArray();
+                $filteredData[] = $row;
             }
         }
 

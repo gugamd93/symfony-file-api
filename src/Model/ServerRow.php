@@ -287,15 +287,4 @@ class ServerRow
         $this->price = $price;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'Model' => $this->getModel(),
-            'RAM' => $this->getFullRamDescription(),
-            'HDD' => $this->getFullStorageDescription(),
-            'Location' => $this->getLocation(),
-            'Price' => $this->getPrice()
-        ];
-    }
 }

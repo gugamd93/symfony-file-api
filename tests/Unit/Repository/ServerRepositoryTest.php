@@ -2,6 +2,7 @@
 
 namespace App\Tests\Unit\Repository;
 
+use App\Model\ServerRow;
 use PHPUnit\Framework\TestCase;
 use App\Repository\ServerRepository;
 use App\Model\Contract\CustomModelInterface;
@@ -41,15 +42,16 @@ class ServerRepositoryTest extends TestCase
         $filterCondition = ['key' => 'value'];
 
         $model = $this->createMock(CustomModelInterface::class);
+        $mockServerRow = [new ServerRow([])];
         $model->expects($this->once())
             ->method('filter')
             ->with($filterCondition)
-            ->willReturn(['filteredData']);
+            ->willReturn($mockServerRow);
 
         $repository = new ServerRepository($model);
         $result = $repository->filter($filterCondition);
 
-        $this->assertEquals(['filteredData'], $result);
+        $this->assertEquals($mockServerRow, $result);
     }
 
     public function testLoad(): void

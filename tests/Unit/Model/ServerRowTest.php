@@ -29,31 +29,6 @@ class ServerRowTest extends TestCase
         $this->assertSame('SATA', $serverRow->getStorageType());
     }
 
-    public function testToArray(): void
-    {
-        $data = [
-            'Dell R210-IIIntel G530',
-            '4GBDDR3',
-            '2x500GBSATA2',
-            'AmsterdamAMS-01',
-            '€60.99',
-        ];
-
-        $serverRow = new ServerRow($data);
-        $serverRow->build();
-        $serverRowArray = $serverRow->toArray();
-
-        $expectedArray = [
-            'Model' => 'Dell R210-IIIntel G530',
-            'RAM' => '4GBDDR3',
-            'HDD' => '2x500GBSATA2',
-            'Location' => 'AmsterdamAMS-01',
-            'Price' => '€60.99',
-        ];
-
-        $this->assertSame($expectedArray, $serverRowArray);
-    }
-
     public function testSetData(): void
     {
         $data = [];
