@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "be30207e-11d5-41eb-acc7-4e3e43d6470a",
+		"name": "SF File Server API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18475042"
+	},
+	"item": [
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{prefix}}/server?filter[Location]=Washington D.C.WDC-01&filter[Harddisk type]=SATA&filter[Storage]=1TB&filter[Ram][]=8GB&filter[Ram][]=4GB",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{prefix}}",
+						"server"
+					],
+					"query": [
+						{
+							"key": "XDEBUG_SESSION_START",
+							"value": "PHPSTORM",
+							"disabled": true
+						},
+						{
+							"key": "filter[Location]",
+							"value": "AmsterdamAMS-01",
+							"disabled": true
+						},
+						{
+							"key": "filter[Location]",
+							"value": "DallasDAL-10",
+							"disabled": true
+						},
+						{
+							"key": "filter[Location]",
+							"value": "Washington D.C.WDC-01"
+						},
+						{
+							"key": "filter[Harddisk type]",
+							"value": "SATA"
+						},
+						{
+							"key": "filter[Storage]",
+							"value": "1TB"
+						},
+						{
+							"key": "filter[Ram][]",
+							"value": "8GB"
+						},
+						{
+							"key": "filter[Ram][]",
+							"value": "4GB"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
