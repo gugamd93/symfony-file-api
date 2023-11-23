@@ -5,6 +5,11 @@ namespace App\Model;
 use App\Model\Contract\CustomModelInterface;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
+/**
+ * This class represents the rows from the file database.
+ * All operations about the fields, like reading and
+ * extracting values, are performed through this class
+ */
 class ServerRow
 {
     private array $_data;
@@ -174,6 +179,14 @@ class ServerRow
         return $this;
     }
 
+    /**
+     * This method is responsible for extracting the raw storage values
+     * and converting them into the appropriate format:
+     * 0, 250GB, 500GB, 1TB, 2TB, 3TB, 4TB, 8TB, 12TB, 24TB, 48TB, 72TB
+     * To achieve that, we need to convert the storage amount to GB and make
+     * an inference by approximating the value to one of the values above
+     * @return self
+     */
     private function extractTotalStorage(): self
     {
         $capacities = [
@@ -210,6 +223,7 @@ class ServerRow
         $closestOption = null;
         $minDifference = PHP_INT_MAX;
 
+        // Approximation of the storage to the given list
         foreach ($outputOptions as $option) {
             $difference = abs($option - $totalStorage);
             if ($difference < $minDifference) {
@@ -218,6 +232,7 @@ class ServerRow
             }
         }
 
+        // Determine the display type (GB/TB)
         if ($closestOption >= 1024) {
             $closestOption = $closestOption / 1024;
             $this->setTotalStorage($closestOption . 'TB');
@@ -231,13 +246,11 @@ class ServerRow
     private function extractStorageType(): self
     {
         $description = $this->getFullStorageDescription();
-        if (preg_match('/SSD/i', $description)) {
-            $type = 'SSD';
-        } elseif (preg_match('/SATA/i', $description)) {
-            $type = 'SATA';
-        } else {
-            $type = 'SAS';
-        }
+        $type = match (true) {
+            str_contains($description, 'SSD') => 'SSD',
+            str_contains($description, 'SATA') => 'SATA',
+            default => 'SAS',
+        };
 
         $this->setStorageType($type);
 

@@ -6,6 +6,9 @@ use App\Dto\Exception\UnexpectedTypeException;
 use App\Dto\Output\ServerOutputDto;
 use App\Model\ServerRow;
 
+/**
+ * Transformer for Server data output
+ */
 class ServerOutputDtoTransformer extends AbstractOutputDtoTransformer
 {
 

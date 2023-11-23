@@ -6,6 +6,10 @@ use App\Model\Contract\CustomModelInterface;
 use App\Model\ServerRow;
 use App\Repository\Contract\CustomRepositoryInterface;
 
+/**
+ * This class represents a repository that performs some operations on
+ * data retrieved from the file database
+ */
 class ServerRepository implements CustomRepositoryInterface
 {
     public function __construct(

@@ -6,6 +6,11 @@ use App\Model\Contract\CustomModelInterface;
 use App\Service\Contract\ServerDataProviderInterface;
 use App\Service\Contract\ServerRowFactoryInterface;
 
+/**
+ * This class represents the data from file database and
+ * is capable of filtering the data contained in ServerRow
+ * objects
+ */
 class ServerModel implements CustomModelInterface
 {
     public function __construct(
@@ -23,7 +28,9 @@ class ServerModel implements CustomModelInterface
 
     public function load(): self
     {
+        // reads data from file
         $data = $this->dataProvider->getServerData();
+        // stores data in memory
         $this->setData($data);
 
         return $this;

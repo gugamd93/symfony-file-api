@@ -30,4 +30,5 @@ services:
     App\Service\Contract\ServerRowFactoryInterface: '@App\Service\ServerRowFactoryService'
     App\Service\ServerFilePathService:
         arguments:
+            # injecting a value from .env
             $databaseFilePath: '%app.database_file_path%'

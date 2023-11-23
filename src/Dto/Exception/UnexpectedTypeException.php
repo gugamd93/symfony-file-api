@@ -2,6 +2,9 @@
 
 namespace App\Dto\Exception;
 
+/**
+ * Custom exception class
+ */
 class UnexpectedTypeException extends \RuntimeException
 {
     private const CODE = 113;

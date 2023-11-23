@@ -4,6 +4,9 @@ namespace App\Dto\Output;
 
 use JMS\Serializer\Annotation as Serialization;
 
+/**
+ * DTO for output Server data
+ */
 class ServerOutputDto
 {
     /**

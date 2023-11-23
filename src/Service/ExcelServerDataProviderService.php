@@ -5,6 +5,9 @@ namespace App\Service;
 use App\Service\Contract\PathProviderInterface;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
+/**
+ * This class is specialized in reading the file database and returning an array
+ */
 class ExcelServerDataProviderService implements Contract\ServerDataProviderInterface
 {
     public function __construct(
