@@ -96,5 +96,7 @@ class ServerControllerTest extends WebTestCase
         $this->assertArrayHasKey('HDD', $responseData[0]);
         $this->assertArrayHasKey('Location', $responseData[0]);
         $this->assertArrayHasKey('Price', $responseData[0]);
+
+        $this->assertStringStartsWith($filter['filter']['Ram'][0], $responseData[0]['RAM']);
     }
 }
